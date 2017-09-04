@@ -40,24 +40,28 @@ An element to display a list of Kano badges
                 margin: auto;
             }
         </style>
-        <template is="dom-if" if="[[!badges.length]]">
-            <div class="loader">
-                <div class="loader-label">
-                    Loading...
+        <dom-if>
+            <template is="dom-if" if="[[!badges.length]]">
+                <div class="loader">
+                    <div class="loader-label">
+                        Loading...
+                    </div>
+                    <paper-spinner-lite active="[[!badges.length]]">
+                    </paper-spinner-lite>
                 </div>
-                <paper-spinner-lite active="[[!badges.length]]">
-                </paper-spinner-lite>
-            </div>
-        </template>
-        <template is="dom-repeat" items="[[badges]]" as="badge">
-            <kwc-badge title="[[badge.title]]"
-                       criteria="[[badge.criteria]]"
-                       current-user="[[currentUser]]"
-                       description="[[badge.description]]"
-                       image-url="[[badge.imageUrl]]"
-                       unlocked="[[badge.unlocked]]">
-                       </kwc-badge>
-        </template>
+            </template>
+        </dom-if>
+        <dom-repeat>
+            <template is="dom-repeat" items="[[badges]]" as="badge">
+                <kwc-badge title="[[badge.title]]"
+                           criteria="[[badge.criteria]]"
+                           current-user="[[currentUser]]"
+                           description="[[badge.description]]"
+                           image-url="[[badge.imageUrl]]"
+                           unlocked="[[badge.unlocked]]">
+                           </kwc-badge>
+            </template>
+        </dom-repeat>
     </template>
     <script>
         Polymer({
