@@ -1,0 +1,86 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../paper-spinner/paper-spinner-lite.html">
+<link rel="import" href="../kwc-badge/kwc-badge.html">
+<link rel="import" href="../web-components/kano-style/kano-style.html">
+
+<!--
+`kwc-badge-listing`
+An element to display a list of Kano badges
+
+@demo demo/index.html
+-->
+
+<dom-module id="kwc-badge-listing">
+    <template>
+        <style>
+            :host {
+                --paper-spinner-color: var(--color-kano-orange);
+                --kwc-badge-margin: 30px;
+                @apply --layout-horizontal;
+                @apply --layout-wrap;
+                @apply --layout-center-justified;
+                font-family: var(--font-body);
+                min-height: 100px;
+                position: relative;
+            }
+            :host .loader {
+                @apply --layout-fit;
+                margin: auto;
+            }
+            :host .loader-label {
+                color: var(--color-abbey);
+                font-size: 24px;
+                font-weight: bold;
+                padding-bottom: 24px;
+                text-align: center;
+            }
+            :host paper-spinner-lite {
+                display: block;
+                margin: auto;
+            }
+        </style>
+        <template is="dom-if" if="[[!badges.length]]">
+            <div class="loader">
+                <div class="loader-label">
+                    Loading...
+                </div>
+                <paper-spinner-lite active="[[!badges.length]]">
+                </paper-spinner-lite>
+            </div>
+        </template>
+        <template is="dom-repeat" items="[[badges]]" as="badge">
+            <kwc-badge title="[[badge.title]]"
+                       criteria="[[badge.criteria]]"
+                       current-user="[[currentUser]]"
+                       description="[[badge.description]]"
+                       image-url="[[badge.imageUrl]]"
+                       unlocked="[[badge.unlocked]]">
+                       </kwc-badge>
+        </template>
+    </template>
+    <script>
+        Polymer({
+          is: 'kwc-badge-listing',
+          properties: {
+              /**
+               * Array of badges to be displayed
+               */
+              badges: {
+                  type: Array,
+                  value: function () {
+                      return [];
+                  },
+              },
+              /**
+               * Boolean to indicate whether the user viewing the badges
+               * is the one that has earned them
+               */
+              currentUser: {
+                  type: Boolean,
+                  value: false
+              }
+          }
+        });
+    </script>
+</dom-module>
