@@ -12,34 +12,33 @@
         <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
         <link rel="import" href="../kwc-badge-listing.html">
 
-        <style is="custom-style" include="demo-pages-shared-styles">
-            kwc-badge-listing {
-                width: 100%;
-            }
-        </style>
+        <custom-style>
+            <style is="custom-style" include="demo-pages-shared-styles">
+                kwc-badge-listing {
+                    width: 100%;
+                }
+            </style>
+        </custom-style>
+
     </head>
     <body>
         <div class="vertical-section-container">
             <h3>kwc-badge-listing Loading Screen</h3>
             <demo-snippet>
-                <template is="dom-bind">
+                <template>
                     <kwc-badge-listing></kwc-badge-listing>
                 </template>
             </demo-snippet>
-        </div>
-        <div class="vertical-section-container">
             <h3>kwc-badge-listing (another user)</h3>
             <demo-snippet>
-                <template is="dom-bind" id="anotherUser">
-                    <kwc-badge-listing id="listing"></kwc-badge-listing>
+                <template>
+                    <kwc-badge-listing  id="anotherUser"></kwc-badge-listing>
                 </template>
             </demo-snippet>
-        </div>
-        <div class="vertical-section-container">
             <h3>kwc-badge-listing (current user)</h3>
             <demo-snippet>
-                <template is="dom-bind" id="currentUser">
-                    <kwc-badge-listing id="listing" current-user></kwc-badge-listing>
+                <template>
+                    <kwc-badge-listing id="currentUser" current-user></kwc-badge-listing>
                 </template>
             </demo-snippet>
         </div>
@@ -312,8 +311,8 @@
             document.addEventListener('WebComponentsReady', () => {
                 var anotherUser = document.getElementById('anotherUser'),
                     currentUser = document.getElementById('currentUser');
-                anotherUser.$.listing.badges = data;
-                currentUser.$.listing.badges = data;
+                anotherUser.badges = data;
+                currentUser.badges = data;
             });
         </script>
     </body>
