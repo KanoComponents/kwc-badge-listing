@@ -40,41 +40,35 @@ An element to display a list of Kano badges
                 margin: auto;
             }
         </style>
-        <dom-if>
-            <template is="dom-if" if="[[!badges.length]]">
-                <div class="loader">
-                    <div class="loader-label">
-                        Loading...
-                    </div>
-                    <paper-spinner-lite active="[[!badges.length]]">
-                    </paper-spinner-lite>
+        <template is="dom-if" if="[[!badges.length]]">
+            <div class="loader">
+                <div class="loader-label">
+                    Loading...
                 </div>
-            </template>
-        </dom-if>
-        <dom-repeat>
-            <template is="dom-repeat" items="[[badges]]" as="badge">
-                <kwc-badge title="[[badge.title]]"
-                           criteria="[[badge.criteria]]"
-                           current-user="[[currentUser]]"
-                           description="[[badge.description]]"
-                           image-url="[[badge.imageUrl]]"
-                           unlocked="[[badge.unlocked]]">
-                           </kwc-badge>
-            </template>
-        </dom-repeat>
+                <paper-spinner-lite active="[[!badges.length]]">
+                </paper-spinner-lite>
+            </div>
+        </template>
+        <template is="dom-repeat" items="[[badges]]" as="badge">
+            <kwc-badge title="[[badge.title]]"
+                       criteria="[[badge.criteria]]"
+                       current-user="[[currentUser]]"
+                       description="[[badge.description]]"
+                       image-url="[[badge.imageUrl]]"
+                       unlocked="[[badge.unlocked]]">
+                       </kwc-badge>
+        </template>
     </template>
     <script>
         Polymer({
           is: 'kwc-badge-listing',
           properties: {
-              /**
-               * Array of badges to be displayed
-               */
+              /** Array of badges to be displayed */
               badges: {
                   type: Array,
                   value: function () {
                       return [];
-                  },
+                  }
               },
               /**
                * Boolean to indicate whether the user viewing the badges
