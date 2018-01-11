@@ -6,7 +6,7 @@
     "polymer": "Polymer/polymer#^1.9.0",
     "paper-spinner": "^2.0.0",
     "iron-flex-layout": "^2.0.0",
-    "kwc-badge": "git@github.com:KanoComponents/kwc-badge.git#^2.0.0",
+    "kwc-badge": "git@github.com:KanoComponents/kwc-badge.git",
     "web-components": "git@github.com:KanoComputing/web-components.git#master"
   },
   "devDependencies": {
