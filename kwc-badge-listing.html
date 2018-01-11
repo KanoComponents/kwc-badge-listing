@@ -8,6 +8,11 @@
 `kwc-badge-listing`
 An element to display a list of Kano badges
 
+Custom property | Description | Default
+----------------|-------------|----------
+`--kwc-badge-listing-gutter` | The width of the margin around badges | `25px`
+
+
 @demo demo/index.html
 -->
 
@@ -38,6 +43,9 @@ An element to display a list of Kano badges
             :host paper-spinner-lite {
                 display: block;
                 margin: auto;
+            }
+            :host kwc-badge {
+                margin: var(--kwc-badge-listing-gutter, 25px);
             }
         </style>
         <template is="dom-if" if="[[!badges.length]]">
