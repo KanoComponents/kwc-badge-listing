@@ -1,5 +1,5 @@
 modulizer --out . \
---npm-name @kano/kwc-file-picker \
+--npm-name @kano/kwc-badge-listing \
 --npm-version 3.0.0-beta.1 \
 --dependency-mapping kwc-badge,@kano/kwc-badge,3.0.0-beta.1 \
 --dependency-mapping kwc-paper-tooltip,@kano/kwc-paper-tooltip,3.0.0-beta.1 \
