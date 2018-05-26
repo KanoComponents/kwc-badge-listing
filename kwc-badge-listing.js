@@ -1,10 +1,4 @@
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../paper-spinner/paper-spinner-lite.html">
-<link rel="import" href="../kwc-badge/kwc-badge.html">
-<link rel="import" href="../web-components/kano-style/kano-style.html">
-
-<!--
+/**
 `kwc-badge-listing`
 An element to display a list of Kano badges
 
@@ -14,10 +8,22 @@ Custom property | Description | Default
 
 
 @demo demo/index.html
--->
+*/
+/*
+  FIXME(polymer-modulizer): the above comments were extracted
+  from HTML and may be out of place here. Review them and
+  then delete this comment!
+*/
+import '@polymer/polymer/polymer-legacy.js';
 
-<dom-module id="kwc-badge-listing">
-    <template>
+import '@polymer/iron-flex-layout/iron-flex-layout.js';
+import '@polymer/paper-spinner/paper-spinner-lite.js';
+import '@kano/kwc-badge/kwc-badge.js';
+import '@kano/web-components/kano-style/kano-style.js';
+import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
+import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+Polymer({
+  _template: html`
         <style>
             :host {
                 --paper-spinner-color: var(--color-kano-orange);
@@ -58,35 +64,28 @@ Custom property | Description | Default
             </div>
         </template>
         <template is="dom-repeat" items="[[badges]]" as="badge">
-            <kwc-badge title="[[badge.title]]"
-                       criteria="[[badge.criteria]]"
-                       current-user="[[currentUser]]"
-                       description="[[badge.description]]"
-                       image-url="[[badge.imageUrl]]"
-                       unlocked="[[badge.unlocked]]">
+            <kwc-badge title="[[badge.title]]" criteria="[[badge.criteria]]" current-user="[[currentUser]]" description="[[badge.description]]" image-url="[[badge.imageUrl]]" unlocked="[[badge.unlocked]]">
                        </kwc-badge>
         </template>
-    </template>
-    <script>
-        Polymer({
-          is: 'kwc-badge-listing',
-          properties: {
-              /** Array of badges to be displayed */
-              badges: {
-                  type: Array,
-                  value: function () {
-                      return [];
-                  }
-              },
-              /**
-               * Boolean to indicate whether the user viewing the badges
-               * is the one that has earned them
-               */
-              currentUser: {
-                  type: Boolean,
-                  value: false
-              }
+`,
+
+  is: 'kwc-badge-listing',
+
+  properties: {
+      /** Array of badges to be displayed */
+      badges: {
+          type: Array,
+          value: function () {
+              return [];
           }
-        });
-    </script>
-</dom-module>
+      },
+      /**
+       * Boolean to indicate whether the user viewing the badges
+       * is the one that has earned them
+       */
+      currentUser: {
+          type: Boolean,
+          value: false
+      }
+  }
+});
